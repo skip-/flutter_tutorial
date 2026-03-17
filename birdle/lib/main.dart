@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum HitType { hit, partial, miss }
+
 void main() {
   runApp(const MainApp());
 }
@@ -10,9 +12,45 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      //theme: ThemeData(
+      //  scaffoldBackgroundColor: Colors.grey[200],  // Default bg color for all scaffolds
+      //  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      //  useMaterial3: true,
+      //),
       home: Scaffold(
+        backgroundColor: Colors.black,  // Set background color
         body: Center(
-          child: Text('Hello Katherine!'),
+          child: Tile('A', HitType.hit),
+        ),
+      ),
+    );
+  }
+}
+
+class Tile extends StatelessWidget {
+  const Tile(this.letter, this.hitType, {super.key});
+
+  final String letter;
+  final HitType hitType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        color: switch (hitType) {
+          HitType.hit => Colors.green,
+          HitType.partial => Colors.yellow,
+          HitType.miss => Colors.grey,
+          _ => Colors.white,
+        },
+      ),
+      child: Center(
+        child: Text(
+          letter.toUpperCase(),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
     );
