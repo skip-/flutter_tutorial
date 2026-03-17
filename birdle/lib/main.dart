@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-enum HitType { hit, partial, miss }
+import 'game.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,16 +10,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       //theme: ThemeData(
       //  scaffoldBackgroundColor: Colors.grey[200],  // Default bg color for all scaffolds
       //  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       //  useMaterial3: true,
       //),
       home: Scaffold(
+        appBar: AppBar(
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: Text('Birdle'),
+          ),
+        ),
         backgroundColor: Colors.black,  // Set background color
         body: Center(
-          child: Tile('A', HitType.hit),
+          child: GamePage(),
+          //child: Tile('A', HitType.hit),
         ),
       ),
     );
@@ -52,6 +58,33 @@ class Tile extends StatelessWidget {
           letter.toUpperCase(),
           style: Theme.of(context).textTheme.titleLarge,
         ),
+      ),
+    );
+  }
+}
+
+class GamePage extends StatelessWidget {
+  GamePage({super.key});
+
+  // This object is part of the game.dart file.
+  // It manages wordle logic.
+  final Game _game = Game();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        spacing: 5.0,
+        children: [
+          for (var guess in _game.guesses)
+            Row(
+              spacing: 5.0,
+              children: [
+                for (var letter in guess) Tile(letter.char, letter.type),
+              ],
+            ),
+        ],
       ),
     );
   }
