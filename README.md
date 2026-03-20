@@ -79,6 +79,8 @@ Checkbox
 
 ## NOTES
 
+For efficiency, Flutter uses a single-pass layout approach. It follows the three rules listed below to create the visual layout in a single pass through the object tree, saving compute cycles, battery life, and time.
+
 ### Layouts and Constraints
 
 BoxDecoration allows for basic styling of the container
@@ -102,4 +104,15 @@ Rows and Columns
 * Unbounded width/height errors
     A widget in a row that requests to be as big as possible will cause an unbounded error as it could be infinitely large.
 
+### Common Errors
+
+*Unbounded Constraints*
+Parent containers pass down constraints, children pass up sizes. When a container (ListView - vertically scrollable, fills parent width)), and a child (ListView - horizontally scrollable, fills parent height) result in an unbounded (limitless) double.infinity, flutter won't know where to stop rendering and will throw an "Unbounded constraints" exception.
+
+*Unbounded Height Error*
+Another example, column with ListView. Column has infinite height constraint, but width limited by parent. ListView has infinite height, width limited by parent. Since the child requests unbounded "all the available" height, the result would be infinite. 
+
+In both cases, you can limit the size of ListView
+* Fixed size: SizeBox(height: 42, child: ListView(children:...))
+* Fill available space allowing space for other widgets: Expanded(child: ListView()) or Flexible(child: ListView())
 
