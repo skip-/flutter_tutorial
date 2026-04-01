@@ -30,3 +30,7 @@ In the browser window opened by `dart devtools` enter the connection URL:
 `http://127.0.0.1:57589/_FuA6Vjwmtg=`
 
 
+### Game
+
+Odd behavior - only accepts a limited set of words as legal guesses. Should probably be changed to allow any combination of five alphabet characters (no numbers or special characters).
+

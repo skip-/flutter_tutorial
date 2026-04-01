@@ -68,6 +68,7 @@ class Game {
   // For finer control over logic, use other methods such as [isGuessLegal]
   // and [matchGuess]
   Word guess(String guess) {
+    print('Guess: "${guess}"');
     final result = matchGuessOnly(guess);
     addGuessToList(result);
     return result;

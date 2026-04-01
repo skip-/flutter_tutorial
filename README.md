@@ -117,3 +117,4 @@ In both cases, you can limit the size of ListView
 * Fill available space allowing space for other widgets: Expanded(child: ListView()) or Flexible(child: ListView())
   Expanded() - tells the child to fill all the available space along the main axis (horizontal for Row, vertical for Column) that hasn't been taken by the other children.
 
+

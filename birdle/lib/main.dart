@@ -41,7 +41,9 @@ class Tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.bounceIn,  // default is linear, 
       width: 60,
       height: 60,
       decoration: BoxDecoration(
