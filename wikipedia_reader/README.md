@@ -4,11 +4,11 @@ A Flutter project to fetch wikipedia articles using HTTP and display summaries.
 
 App uses the architectural pattern MVVM (Model-View-ViewModel)
 
-Model (data operations) is responsible for data and low-level tasks, such as making HTTP requests, caching data, and managing system resources used by Flutter plugins. The model does not usually need to import Flutter libraries.
+* Model (data operations) is responsible for data and low-level tasks, such as making HTTP requests, caching data, and managing system resources used by Flutter plugins. The model does not usually need to import Flutter libraries.
 
-View (user interface) is responsible for displaying the app elements to the user.
+* View (user interface) is responsible for displaying the app widgets to the user. Use ListenableBuilder to subscribe to notifications from ChangeNotifier.notifyListeners.
 
-ViewModel (state management) connects the View to the Model and provides interactivity. Use Flutter's ChangeNotifier class to notify the UI when data changes.
+* ViewModel (state management) connects the View to the Model and provides interactivity. Use Flutter's ChangeNotifier class to notify the UI when data changes.
 
 
 ## Instructions
