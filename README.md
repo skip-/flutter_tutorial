@@ -76,6 +76,16 @@ Text
 Image
 Checkbox
 
+4. Launch debug
+
+```bash
+cd /c/proj/flutter_tutorial/birdle
+dart devtools
+```
+
+Connect to the Dart VM Service on Chrome with a link like this `http://127.0.0.1:57589/_FuA6Vjwmtg=`
+The link can be found in the start-up messages of Dart of Flutter when the app is launched.
+
 
 ## NOTES
 
